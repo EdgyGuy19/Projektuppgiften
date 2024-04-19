@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://csrqhg7q4rs"]
+
+[ext_resource type="Texture2D" uid="uid://ctmhy1bkiov10" path="res://Assets/charecters/Medieval King Pack 2/Sprites/Idle.png" id="1_3eqys"]
+[ext_resource type="Script" path="res://player.gd" id="1_ex4ky"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dormu"]
+height = 52.0
+
+[node name="Game" type="Node2D"]
+
+[node name="player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_ex4ky")
+
+[node name="Sprite2D" type="Sprite2D" parent="player"]
+position = Vector2(44, 0)
+scale = Vector2(0.980469, 1)
+texture = ExtResource("1_3eqys")
+hframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+position = Vector2(49, 24)
+shape = SubResource("CapsuleShape2D_dormu")
