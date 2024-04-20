@@ -9,4 +9,5 @@ VÅRA REQUIRMENTS
 * använda coins i en store för att skaffa fler karaktärer
 * fulfungerande menu och en icon
 * multiplayer
-* level ups och vi dem så får spelaren välja items för att bli starkare
+* level ups som får spelaren att välja items för att bli starkare
+* KSK MER 
