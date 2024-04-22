@@ -26,6 +26,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_wddjx"]
 resource_name = "idle"
+length = 0.7
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -111,7 +113,7 @@ _data = {
 "run": SubResource("Animation_w6x1q")
 }
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfl5c"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2dske"]
 texture = ExtResource("4_f2n6l")
 0:0/0 = 0
 1:0/0 = 0
@@ -2031,28 +2033,31 @@ texture = ExtResource("4_f2n6l")
 47:47/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_vr8ec"]
-sources/0 = SubResource("TileSetAtlasSource_gfl5c")
+sources/4 = SubResource("TileSetAtlasSource_2dske")
 
 [node name="Game" type="Node2D"]
 
 [node name="player" type="CharacterBody2D" parent="."]
+top_level = true
 script = ExtResource("1_ex4ky")
 speed = 300.0
 
 [node name="Sprite2D" type="Sprite2D" parent="player"]
-position = Vector2(44, 0)
+position = Vector2(-5, -21)
 scale = Vector2(0.980469, 1)
-texture = ExtResource("2_i4euw")
+texture = ExtResource("1_3eqys")
 hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
-position = Vector2(49, 24)
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_dormu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="player"]
 libraries = {
 "": SubResource("AnimationLibrary_d8hxg")
 }
+
+[node name="Camera2D" type="Camera2D" parent="player"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_vr8ec")
