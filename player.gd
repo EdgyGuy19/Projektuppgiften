@@ -25,11 +25,11 @@ func _physics_process(delta):
 	move_and_slide()
 	
 #Playing the animations
-	animations(horizontal_direction)
+	animations(horizontal_direction, vertical_direction)
 	
 #Function for changing animations
-func animations(direction):
-	if direction == 0:
+func animations(horizontal, vertical):
+	if horizontal == 0 and vertical == 0:
 		ap.play("idle")
 	else:
 		ap.play("run")
