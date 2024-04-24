@@ -1,13 +1,7 @@
-# Projektuppgiften
-Episk uppgift
+#DD1349 VT24 Projektuppgift i introduktion till datalogi (projinda24)
 
-VÅRA REQUIRMENTS
+Edgar Palynski, Adam Wallén
 
-* Oändlig tile map
-* Flera typer av karaktärer och monsters
-* coins som droppar ur enemies
-* använda coins i en store för att skaffa fler karaktärer
-* fulfungerande menu och en icon
-* multiplayer
-* level ups som får spelaren att välja items för att bli starkare
-* KSK MER 
+Vår projektuppgiften är ett spel som liknar Vampire Survivors. Vi kommer bygga den i GoDot engine och använder oss av GDscript.
+
+Själva spelet är en rogue-like spel där man börjar med en karaktär på nivå 1 och får besewgra en oändlig mängd av olika mobs. Under tiden får man leve-ups och power-ups också som gör spelet både enklare och flexibel. Spelet går i en oändlig cykel tills spelaren dör. Under tiden kommer andelen av mobs öka, men också deras svårighet. 
