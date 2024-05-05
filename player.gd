@@ -19,9 +19,6 @@ func _physics_process(delta):
 	velocity.x = speed * horizontal_direction
 	velocity.y = speed * vertical_direction
 
-#Printing vector(for testing)
-	print(velocity)
-
 	move_and_slide()
 	
 #Playing the animations
