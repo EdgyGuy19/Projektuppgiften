@@ -1,12 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://csrqhg7q4rs"]
+[gd_scene load_steps=14 format=3 uid="uid://csrqhg7q4rs"]
 
 [ext_resource type="Texture2D" uid="uid://ctmhy1bkiov10" path="res://Assets/charecters/Medieval King Pack 2/Sprites/Idle.png" id="1_3eqys"]
 [ext_resource type="Script" path="res://player.gd" id="1_ex4ky"]
 [ext_resource type="Texture2D" uid="uid://dnbykxghbkdsj" path="res://Assets/charecters/Medieval King Pack 2/Sprites/Run.png" id="2_i4euw"]
 [ext_resource type="Texture2D" uid="uid://bkwsyh14lghyn" path="res://Assets/map/gentle_forest/48x48 resize/gentle forest (48x48 resize) v02.png" id="4_f2n6l"]
 [ext_resource type="Script" path="res://TileMap.gd" id="5_yndnt"]
-[ext_resource type="Texture2D" uid="uid://dlirygr1wslbc" path="res://Assets/monsters/Ball and Chain Bot/run.png" id="6_2ymld"]
-[ext_resource type="Script" path="res://mob.gd" id="6_8u4ut"]
+[ext_resource type="PackedScene" uid="uid://bpworbdebjbhl" path="res://mob_spawner.tscn" id="7_qbk8g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dormu"]
 height = 52.0
@@ -2037,47 +2036,6 @@ texture = ExtResource("4_f2n6l")
 [sub_resource type="TileSet" id="TileSet_vr8ec"]
 sources/4 = SubResource("TileSetAtlasSource_2dske")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qrylv"]
-radius = 11.0
-
-[sub_resource type="Animation" id="Animation_ca8ab"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_khl5d"]
-resource_name = "walk"
-length = 2.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_4w8pj"]
-_data = {
-"RESET": SubResource("Animation_ca8ab"),
-"walk": SubResource("Animation_khl5d")
-}
-
 [node name="Game" type="Node2D"]
 
 [node name="player" type="CharacterBody2D" parent="." groups=["player"]]
@@ -2102,29 +2060,10 @@ libraries = {
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 
+[node name="MobSpawner" parent="." instance=ExtResource("7_qbk8g")]
+z_index = 1
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_vr8ec")
 format = 2
 script = ExtResource("5_yndnt")
-
-[node name="mob_ball_chain_bot" type="CharacterBody2D" parent="."]
-position = Vector2(77, -54)
-motion_mode = 1
-script = ExtResource("6_8u4ut")
-movement_speed = 30.0
-
-[node name="Sprite2D" type="Sprite2D" parent="mob_ball_chain_bot"]
-position = Vector2(-2, -4)
-scale = Vector2(1.3, 1.3)
-texture = ExtResource("6_2ymld")
-vframes = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="mob_ball_chain_bot"]
-position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_qrylv")
-one_way_collision_margin = 0.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="mob_ball_chain_bot"]
-libraries = {
-"": SubResource("AnimationLibrary_4w8pj")
-}
