@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://csrqhg7q4rs"]
+[gd_scene load_steps=12 format=3 uid="uid://csrqhg7q4rs"]
 
 [ext_resource type="Texture2D" uid="uid://ctmhy1bkiov10" path="res://Assets/charecters/Medieval King Pack 2/Sprites/Idle.png" id="1_3eqys"]
 [ext_resource type="Script" path="res://player.gd" id="1_ex4ky"]
-[ext_resource type="Script" path="res://Game.gd" id="1_pxe5a"]
 [ext_resource type="Texture2D" uid="uid://dnbykxghbkdsj" path="res://Assets/charecters/Medieval King Pack 2/Sprites/Run.png" id="2_i4euw"]
 [ext_resource type="Texture2D" uid="uid://bshfms071ekri" path="res://Assets/Paradise_Asset_Pack_FREE/FOR_TUTORIAL/tilemap1.png" id="2_qr88t"]
 
@@ -775,7 +774,6 @@ _data = {
 }
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_pxe5a")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_wp7kv")
