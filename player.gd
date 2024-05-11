@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
-@export var speed : float = 100
+@export var speed : float 
 
 @onready var ap = $AnimationPlayer
 @onready var sprite = $Sprite2D
+@onready var game_start_time = Time.get_ticks_msec()
 
 func _physics_process(delta):
 	
@@ -30,3 +31,16 @@ func animations(horizontal, vertical):
 		ap.play("idle")
 	else:
 		ap.play("run")
+
+func get_time():
+	var current_time = Time.get_ticks_msec() - game_start_time
+	var minutes = current_time/1000/60
+	if minutes < 10:
+		minutes = "0"+str(minutes)
+	var seconds = current_time/1000%60
+	if seconds < 10:
+		seconds = "0"+str(seconds)
+	return(str(minutes)+":"+str(seconds))
+
+func _process(delta):
+	$CanvasLayer/Control/Label.text =  get_time()

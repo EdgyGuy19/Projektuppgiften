@@ -2,8 +2,8 @@ extends Node2D
 
 @onready var tilemap = $TileMap
 
-var width = 400
-var height = 400
+var width = 200
+var height = 200
 
 const LAND_CAP = 0.03
 
@@ -37,3 +37,4 @@ func generate_world():
 			else:
 				tilemap.set_cell(0, Vector2(x,y), 0, get_random_atlas_vector())
 	tilemap.set_cells_terrain_connect(0, cells, 0, 0)
+	
