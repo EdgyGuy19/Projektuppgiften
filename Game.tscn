@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://csrqhg7q4rs"]
 
-[ext_resource type="Script" path="res://Game.gd" id="1_dmcho"]
 [ext_resource type="PackedScene" uid="uid://bops58pc5j6o4" path="res://player.tscn" id="1_fpsv0"]
 [ext_resource type="Texture2D" uid="uid://bshfms071ekri" path="res://Assets/Paradise_Asset_Pack_FREE/FOR_TUTORIAL/tilemap1.png" id="3_kqnff"]
+[ext_resource type="Script" path="res://TileMap.gd" id="4_mbb3k"]
 [ext_resource type="PackedScene" uid="uid://bpworbdebjbhl" path="res://mob_spawner.tscn" id="7_qbk8g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rnqbk"]
@@ -613,7 +613,6 @@ terrain_set_0/terrain_0/color = Color(0.0470588, 0.345098, 0.25098, 1)
 sources/0 = SubResource("TileSetAtlasSource_rnqbk")
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_dmcho")
 
 [node name="player" parent="." instance=ExtResource("1_fpsv0")]
 
@@ -623,3 +622,4 @@ z_index = 1
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_iba6g")
 format = 2
+script = ExtResource("4_mbb3k")
