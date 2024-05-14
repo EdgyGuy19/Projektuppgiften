@@ -43,7 +43,7 @@ func animations(horizontal, vertical):
 			ap.play("run")
 
 func _process(_delta):
-  $CanvasLayer/Control/Label.text =  get_time()
+	$CanvasLayer/Control/Label.text =  get_time()
 	if Input.is_key_pressed(KEY_J) and attackcooldown.is_stopped():
 		if not ap.current_animation == "attack1":
 			ap.play("attack1")
