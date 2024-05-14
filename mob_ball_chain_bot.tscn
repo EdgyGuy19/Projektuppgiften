@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://40geiuga3x80"]
+[gd_scene load_steps=11 format=3 uid="uid://40geiuga3x80"]
 
 [ext_resource type="Script" path="res://mob.gd" id="1_fk17p"]
 [ext_resource type="Texture2D" uid="uid://dlirygr1wslbc" path="res://Assets/monsters/Ball and Chain Bot/run.png" id="2_qps2a"]
+[ext_resource type="PackedScene" uid="uid://5te0dyihpp7w" path="res://hurt_box.tscn" id="3_3ugef"]
+[ext_resource type="PackedScene" uid="uid://cs8dcpvd8o6l8" path="res://hit_box.tscn" id="4_d5c7r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gc7e1"]
-radius = 11.0
+radius = 7.0
 
 [sub_resource type="Animation" id="Animation_ca8ab"]
 length = 0.001
@@ -23,7 +25,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_khl5d"]
 resource_name = "walk"
-length = 2.4
+length = 1.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -32,7 +34,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
@@ -44,9 +46,15 @@ _data = {
 "walk": SubResource("Animation_khl5d")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1cvg"]
+size = Vector2(17.0001, 16.9999)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0culg"]
+size = Vector2(21, 22)
+
 [node name="mob_ball_chain_bot" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_fk17p")
-movement_speed = 30.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-2, -4)
@@ -55,7 +63,7 @@ texture = ExtResource("2_qps2a")
 vframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_gc7e1")
 one_way_collision_margin = 0.0
 
@@ -63,3 +71,27 @@ one_way_collision_margin = 0.0
 libraries = {
 "": SubResource("AnimationLibrary_4w8pj")
 }
+
+[node name="HitBox" parent="." instance=ExtResource("4_d5c7r")]
+rotation = -1.5708
+collision_layer = 2
+collision_mask = 2
+damage = 2
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(-0.5, 0.5)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_v1cvg")
+
+[node name="HurtBox" parent="." instance=ExtResource("3_3ugef")]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_0culg")
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+
+[editable path="HitBox"]
+[editable path="HurtBox"]
