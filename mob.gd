@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
 
-@export var movement_speed = 40.0
+
+@export var movement_speed = 50.0
+@export var hp = 10
+
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var sprite = $Sprite2D
