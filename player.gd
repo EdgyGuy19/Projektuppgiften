@@ -7,6 +7,8 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 @onready var sword = $Sprite2D/HitBox
 @onready var attackcooldown = $Sprite2D/HitBox/AttackCooldownTimer
+@onready var game_start_time = Time.get_ticks_msec()
+
 
 func _physics_process(_delta):
 	if not ap.current_animation == "attack1":
@@ -33,6 +35,7 @@ func _physics_process(_delta):
 
 #Function for changing animations
 func animations(horizontal, vertical):
+
 	if not ap.current_animation == "attack1":
 		if horizontal == 0 and vertical == 0:
 			ap.play("idle")
@@ -40,6 +43,7 @@ func animations(horizontal, vertical):
 			ap.play("run")
 
 func _process(_delta):
+  $CanvasLayer/Control/Label.text =  get_time()
 	if Input.is_key_pressed(KEY_J) and attackcooldown.is_stopped():
 		if not ap.current_animation == "attack1":
 			ap.play("attack1")
@@ -48,3 +52,13 @@ func _process(_delta):
 func _on_hurt_box_hurt(damage):
 	hp -= damage
 	print(hp)
+
+func get_time():
+	var current_time = Time.get_ticks_msec() - game_start_time
+	var minutes = current_time/1000/60
+	if minutes < 10:
+		minutes = "0"+str(minutes)
+	var seconds = current_time/1000%60
+	if seconds < 10:
+		seconds = "0"+str(seconds)
+	return(str(minutes)+":"+str(seconds))

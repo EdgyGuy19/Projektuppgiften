@@ -1,14 +1,20 @@
+
 [gd_scene load_steps=15 format=3 uid="uid://bops58pc5j6o4"]
+
 
 [ext_resource type="Script" path="res://player.gd" id="1_x831b"]
 [ext_resource type="Texture2D" uid="uid://ctmhy1bkiov10" path="res://Assets/charecters/Medieval King Pack 2/Sprites/Idle.png" id="2_i6kkr"]
 [ext_resource type="PackedScene" uid="uid://cs8dcpvd8o6l8" path="res://hit_box.tscn" id="3_3ctc6"]
 [ext_resource type="Texture2D" uid="uid://dnbykxghbkdsj" path="res://Assets/charecters/Medieval King Pack 2/Sprites/Run.png" id="3_yg7e0"]
+
 [ext_resource type="Texture2D" uid="uid://c4guc5x5pvwc6" path="res://Assets/charecters/Medieval King Pack 2/Sprites/Attack1.png" id="4_1810p"]
 [ext_resource type="PackedScene" uid="uid://5te0dyihpp7w" path="res://hurt_box.tscn" id="4_auyar"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amk36"]
 size = Vector2(91, 38)
+
+[ext_resource type="FontFile" uid="uid://c5qwkchpqljtp" path="res://Assets/Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/architect-s-daughter/ArchitectsDaughter.ttf" id="4_q0wi4"]
+
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dormu"]
 radius = 5.0
@@ -214,7 +220,7 @@ size = Vector2(16, 32)
 top_level = true
 motion_mode = 1
 script = ExtResource("1_x831b")
-speed = 300.0
+speed = 150.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -21)
@@ -247,6 +253,7 @@ libraries = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+
 [node name="HurtBox" parent="." instance=ExtResource("4_auyar")]
 position = Vector2(0, 2)
 collision_layer = 2
@@ -259,3 +266,24 @@ shape = SubResource("RectangleShape2D_7e4qf")
 
 [editable path="Sprite2D/HitBox"]
 [editable path="HurtBox"]
+
+zoom = Vector2(1.5, 1.5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 503.0
+offset_top = 75.0
+offset_right = 657.0
+offset_bottom = 128.0
+theme_override_fonts/font = ExtResource("4_q0wi4")
+theme_override_font_sizes/font_size = 30
+text = "00.00.00"
+horizontal_alignment = 1
