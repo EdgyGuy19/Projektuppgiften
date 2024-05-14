@@ -28,5 +28,6 @@ func _on_area_entered(area):
 			emit_signal("hurt",damage)
 
 
+
 func _on_disable_timer_timeout():
 	collision.call_deferred("set","disabled",false)
