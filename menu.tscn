@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://1cl4tle35rki"]
+[gd_scene load_steps=4 format=3 uid="uid://1cl4tle35rki"]
 
 [ext_resource type="Script" path="res://Menu.gd" id="1_o764g"]
+[ext_resource type="FontFile" uid="uid://c5qwkchpqljtp" path="res://Assets/Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/architect-s-daughter/ArchitectsDaughter.ttf" id="2_5igpx"]
+[ext_resource type="FontFile" uid="uid://dkj5j50mw2box" path="res://Assets/Godot-Fontpack-d244bf6170b399a6d4d26a0d906058ddf2dafdf1/fonts/kirifont/KiriFont.ttf" id="3_loyfw"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -21,6 +23,7 @@ color = Color(0.501961, 0, 0.501961, 1)
 layout_mode = 0
 offset_right = 1149.0
 offset_bottom = 160.0
+theme_override_fonts/font = ExtResource("2_5igpx")
 theme_override_font_sizes/font_size = 72
 text = "Epic Game"
 horizontal_alignment = 1
@@ -32,6 +35,7 @@ offset_left = 388.0
 offset_top = 283.0
 offset_right = 730.0
 offset_bottom = 406.0
+theme_override_fonts/font = ExtResource("3_loyfw")
 theme_override_font_sizes/font_size = 50
 text = "PLAY"
 
@@ -41,6 +45,7 @@ offset_left = 391.0
 offset_top = 447.0
 offset_right = 716.0
 offset_bottom = 568.0
+theme_override_fonts/font = ExtResource("3_loyfw")
 theme_override_font_sizes/font_size = 50
 text = "GIVE UP"
 
