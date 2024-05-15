@@ -10,7 +10,6 @@ signal hurt(damage)
 
 func _on_area_entered(area):
 	if area.is_in_group("attack"):
-		print(area)
 		if not area.get("damage") == null:
 			match HurtBoxType:
 				0:
@@ -24,7 +23,6 @@ func _on_area_entered(area):
 					if area.has_method("tempdisable"):
 						area.tempdisable()
 			var damage = area.damage
-			print("Damage")
 			emit_signal("hurt",damage)
 
 

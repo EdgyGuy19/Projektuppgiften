@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_ewq4u"]
 script = ExtResource("3_826tu")
 time_start = 0
-time_end = 60
+time_end = 99999
 mob = ExtResource("2_4c1um")
 mob_num = 1
 mob_spawn_delay = 0
