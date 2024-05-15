@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnjm6ishlehuj"]
+
+[ext_resource type="Script" path="res://DeathAnimation.gd" id="1_5qgva"]
+[ext_resource type="Texture2D" uid="uid://vu4yu8pd5xun" path="res://Assets/monsters/Ball and Chain Bot/death.png" id="1_icpkk"]
+
+[sub_resource type="Animation" id="Animation_sgjn4"]
+resource_name = "death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_3ydyp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sxpri"]
+_data = {
+"RESET": SubResource("Animation_3ydyp"),
+"death": SubResource("Animation_sgjn4")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_cf884"]
+line_spacing = 5.0
+font_size = 12
+
+[node name="DeathAnimation" type="Sprite2D"]
+texture = ExtResource("1_icpkk")
+vframes = 5
+script = ExtResource("1_5qgva")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sxpri")
+}
+
+[node name="Label" type="Label" parent="."]
+offset_left = 9.0
+offset_top = -20.0
+offset_right = 43.0
+offset_bottom = -3.0
+text = "5 xp"
+label_settings = SubResource("LabelSettings_cf884")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
