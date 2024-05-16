@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bops58pc5j6o4"]
+[gd_scene load_steps=16 format=3 uid="uid://bops58pc5j6o4"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_x831b"]
 [ext_resource type="Texture2D" uid="uid://ctmhy1bkiov10" path="res://Assets/charecters/Medieval King Pack 2/Sprites/Idle.png" id="2_i6kkr"]
@@ -50,7 +50,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [4]
+"values": [7]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -210,6 +210,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7e4qf"]
 size = Vector2(16, 32)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0rjgu"]
+radius = 662.019
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
 top_level = true
 motion_mode = 1
@@ -220,7 +223,7 @@ speed = 150.0
 position = Vector2(0, -21)
 scale = Vector2(-1, 1)
 texture = ExtResource("2_i6kkr")
-hframes = 4
+hframes = 7
 
 [node name="HitBox" parent="Sprite2D" instance=ExtResource("3_3ctc6")]
 position = Vector2(6, 25)
@@ -281,14 +284,15 @@ offset_top = 14.0
 offset_right = 676.0
 offset_bottom = 41.0
 
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
+[node name="time" type="Label" parent="CanvasLayer/Control"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 503.0
 offset_top = 75.0
 offset_right = 657.0
 offset_bottom = 128.0
 theme_override_font_sizes/font_size = 30
-text = "00.00.00"
+text = "00:00"
 horizontal_alignment = 1
 
 [node name="LevelUp" type="Panel" parent="CanvasLayer/Control"]
@@ -316,6 +320,35 @@ offset_top = 50.0
 offset_right = 190.0
 offset_bottom = 100.0
 
+[node name="DeathPanel" type="Panel" parent="CanvasLayer/Control"]
+unique_name_in_owner = true
+process_mode = 2
+top_level = true
+layout_mode = 0
+offset_left = 626.0
+offset_top = -480.0
+offset_right = 826.0
+offset_bottom = -230.0
+
+[node name="lbl_Result" type="Label" parent="CanvasLayer/Control/DeathPanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 201.0
+offset_bottom = 51.0
+text = "You Lose !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackToMenu" type="Button" parent="CanvasLayer/Control/DeathPanel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 166.0
+offset_right = 159.0
+offset_bottom = 201.0
+text = "To Main Menu"
+
 [node name="LevelLabel" type="Label" parent="CanvasLayer/Control"]
 unique_name_in_owner = true
 layout_mode = 1
@@ -330,7 +363,30 @@ offset_right = 729.76
 offset_bottom = 22.0
 text = "Lvl"
 
+[node name="magic" type="Node2D" parent="."]
+
+[node name="orbTimer" type="Timer" parent="magic"]
+unique_name_in_owner = true
+wait_time = 1.5
+
+[node name="orbAttackTimer" type="Timer" parent="magic/orbTimer"]
+unique_name_in_owner = true
+wait_time = 0.075
+
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+shape = SubResource("CircleShape2D_0rjgu")
+
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+[connection signal="pressed" from="CanvasLayer/Control/DeathPanel/BackToMenu" to="." method="_on_back_to_menu_pressed"]
+[connection signal="timeout" from="magic/orbTimer" to="." method="_on_orb_timer_timeout"]
+[connection signal="timeout" from="magic/orbTimer/orbAttackTimer" to="." method="_on_orb_attack_timer_timeout"]
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
+[connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
 
 [editable path="Sprite2D/HitBox"]
 [editable path="HurtBox"]

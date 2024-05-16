@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://csrqhg7q4rs"]
+[gd_scene load_steps=8 format=3 uid="uid://csrqhg7q4rs"]
 
 [ext_resource type="PackedScene" uid="uid://bops58pc5j6o4" path="res://player.tscn" id="1_fpsv0"]
 [ext_resource type="Texture2D" uid="uid://bshfms071ekri" path="res://Assets/Paradise_Asset_Pack_FREE/FOR_TUTORIAL/tilemap1.png" id="3_kqnff"]
 [ext_resource type="Script" path="res://TileMap.gd" id="4_mbb3k"]
+[ext_resource type="PackedScene" uid="uid://cpe6je6kdks1h" path="res://pause_menu.tscn" id="5_n1qcd"]
 [ext_resource type="PackedScene" uid="uid://bpworbdebjbhl" path="res://mob_spawner.tscn" id="7_qbk8g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rnqbk"]
@@ -623,3 +624,8 @@ z_index = 1
 tile_set = SubResource("TileSet_iba6g")
 format = 2
 script = ExtResource("4_mbb3k")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_n1qcd")]
+visible = false
