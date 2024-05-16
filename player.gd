@@ -23,7 +23,6 @@ var exp_required = 10
 func _physics_process(_delta):
 	
 	update_healthbar()
-	update_experiencebar()
 	#Getting inputs from the player
 	var horizontal_direction = Input.get_axis("left", "right")
 	var vertical_direction = Input.get_axis("up", "down")
@@ -90,13 +89,13 @@ func increase_xp(earnedxp):
 		print("levelup")
 		level += 1
 		levelup()
-	else:
-		print("not level up")
-		xp += earnedxp
-	
+	update_experiencebar()
+
 func calculate_experiencecap():
 	var exp_cap = level
-	if level < 20:
+	if level < 10:
+		exp_cap = 50
+	elif level < 20:
 		exp_cap = level*5
 	elif level < 40:
 		exp_cap = 95 * (level-19)*8

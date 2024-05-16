@@ -328,7 +328,7 @@ offset_left = 689.76
 offset_top = -1.0
 offset_right = 729.76
 offset_bottom = 22.0
-text = "Lvl"
+text = "lvl1"
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 
