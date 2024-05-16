@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dp0t3xy777jky"]
+
+[ext_resource type="Texture2D" uid="uid://c8enutupnqklo" path="res://Assets/Mini Fires 2/5/3.png" id="1_0saub"]
+[ext_resource type="Script" path="res://orb.gd" id="1_fgpay"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pdmf"]
+size = Vector2(22, 22)
+
+[node name="Orb" type="Area2D" groups=["attack"]]
+top_level = true
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_fgpay")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_0saub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_5pdmf")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
