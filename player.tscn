@@ -361,7 +361,7 @@ offset_left = 689.76
 offset_top = -1.0
 offset_right = 729.76
 offset_bottom = 22.0
-text = "Lvl"
+text = "lvl1"
 
 [node name="magic" type="Node2D" parent="."]
 
